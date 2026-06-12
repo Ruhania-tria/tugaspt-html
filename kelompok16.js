@@ -28,34 +28,3 @@ const menu = [
     gambar:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200"
   }
 ]
-
-module.exports = menu
-const express = require('express')
-const path = require('path')
-
-const menu = require('./data')
-
-const app = express()
-
-app.use(express.static('public'))
-
-app.get('/api/menu', (req,res)=>{
-  res.json(menu)
-})
-
-const PORT = 3000
-
-app.listen(PORT, ()=>{
-  console.log(Server berjalan di http://localhost:${PORT})
-})
-{
-  "name": "rasa-kopi",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.19.2"
-  }
-}
