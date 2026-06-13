@@ -187,4 +187,25 @@ function isiDropdownMenu() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", isiDropdownMenu);
+function renderMenuCards() {
+  const container = document.getElementById('menu-container');
+  if (!container) return;
+
+  container.innerHTML = '';
+  menuData.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'menu-card';
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" class="menu-img">
+      <div class="menu-info">
+        <h3>${item.name}</h3>
+        <p class="menu-price">${item.price}</p>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  isiDropdownMenu();
+  renderMenuCards();
+});
