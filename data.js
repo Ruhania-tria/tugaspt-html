@@ -192,7 +192,7 @@ function renderMenuCards() {
   if (!container) return;
 
   container.innerHTML = '';
-  menuData.forEach(item => {
+  menuData.slice(0,3).forEach(item => {
     const card = document.createElement('div');
     card.className = 'menu-card';
     card.innerHTML = `

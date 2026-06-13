@@ -29,10 +29,21 @@ body{
   z-index:999;
 }
 
-.logo{
-  font-size:30px;
-  font-weight:bold;
-  color:#ffb347;
+.logo {
+  width: 120px;
+  height:55px;
+  beckround-image: url('logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+@media (max-widht:768px){
+  .logo{
+    width: 100px;
+    height: 45px;
+    background-position: center;
+  }
 }
 
 .navbar{
