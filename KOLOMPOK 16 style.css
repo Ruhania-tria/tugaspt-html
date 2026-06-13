@@ -28,7 +28,7 @@ header{
 }
 
 .logo {
-  background-image: url('Logo Rasa Kopi.png'); /* Nama file gambar Anda */
+  background-image: url('logo.png'); /* Nama file gambar Anda */
   width: 130px;
   height: 80px;
   background-size: contain;
