@@ -1,32 +1,36 @@
-module.exports = menu
-const express = require('express')
-const path = require('path')
+const express = require("express");
+const path = require("path");
 
-const menu = require('./data')
+const app = express();
 
-const app = express()
+const PORT = 3000;
 
-app.use(express.static('public'))
+/* STATIC FILE */
 
-app.get('/api/menu', (req,res)=>{
-  res.json(menu)
-})
+app.use(express.static(__dirname));
 
-const express = require('express')
-const path = require('path')
-require('dotenv').config()
+/* ROUTE */
 
-const paymentRoute = require('./routes/payment')
+app.get("/",(req,res)=>{
 
-const app = express()
+  res.sendFile(
+    path.join(__dirname,"index.html")
+  );
 
-app.use(express.json())
-app.use(express.static('public'))
+});
 
-app.use('/payment', paymentRoute)
+/* START SERVER */
 
-const PORT = 3000
+app.listen(PORT,()=>{
 
-app.listen(3000, ()=>{
-  console.log(Server berjalan di http://localhost:${300})
-})
+  console.log(`
+======================================
+      RASA KOPI SERVER BERJALAN
+======================================
+
+http://localhost:${PORT}
+
+======================================
+  `);
+
+});
