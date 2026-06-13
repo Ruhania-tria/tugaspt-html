@@ -1,112 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Rasa Kopi</title>
 
-  <link rel="stylesheet" href="KOLOMPOK 16 STYLE.css"/>
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <nav class="navbar">
-        <a href="#" class="logoo"></a>
+  <!-- HEADER -->
 
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
+  <header class="header">
+
+    <div class="logo">
+      ☕ Rasa Kopi
+    </div>
+
+    <nav class="navbar">
+
+      <a href="#home">Beranda</a>
+      <a href="#menu">Menu</a>
+      <a href="#promo">Promo</a>
+      <a href="#payment">Pembayaran</a>
+
     </nav>
+
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <h2>Nikmati Kopi Terbaik Setiap Hari</h2>
+  <!-- HOME -->
+
+  <section class="slide home" id="home">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
+      <h1>Rasa Kopi Indonesia</h1>
+
       <p>
-        Tempat nongkrong modern dengan cita rasa kopi premium
-        dan makanan favorit anak muda.
+        Kopi modern dengan cita rasa premium,
+        snack kekinian, dan pembayaran QRIS.
       </p>
 
-      <button>Pesan Sekarang</button>
+      <button onclick="goToSlide('menu')">
+        Pesan Sekarang
+      </button>
+
     </div>
+
   </section>
 
   <!-- MENU -->
-  <section id="menu" class="menu-section">
+
+  <section class="slide menu-section" id="menu">
+
     <h2>Menu Favorit</h2>
 
     <div class="menu-container" id="menu-container">
 
     </div>
+
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="about-content">
-      <h2>Tentang Rasa Kopi</h2>
+  <!-- PROMO -->
+
+  <section class="slide promo-section" id="promo">
+
+    <div class="promo-box">
+
+      <h2>Promo Hari Ini</h2>
 
       <p>
-        Rasa Kopi hadir dengan konsep cafe modern yang nyaman,
-        harga terjangkau, dan rasa premium.
+        Beli 2 kopi gratis 1 snack pilihan.
       </p>
+
+      <button onclick="goToSlide('payment')">
+        Bayar Sekarang
+      </button>
+
     </div>
+
   </section>
 
-  <!-- TESTIMONI -->
-  <section class="testimonial">
-    <h2>Testimoni Pelanggan</h2>
+  <!-- PAYMENT -->
 
-    <div class="testi-container">
+  <section class="slide payment-section" id="payment">
 
-      <div class="testi-card">
-        <p>"Kopinya enak banget dan tempatnya cozy!"</p>
-        <h4>- Andi</h4>
-      </div>
+    <div class="payment-box">
 
-      <div class="testi-card">
-        <p>"Harga murah tapi rasa bintang lima."</p>
-        <h4>- Sinta</h4>
-      </div>
+      <h2>Pembayaran QRIS</h2>
 
-      <div class="testi-card">
-        <p>"Tempat favorit buat nongkrong malam."</p>
-        <h4>- Rizky</h4>
+      <p>
+        Isi data pesanan lalu scan QRIS untuk pembayaran.
+      </p>
+
+      <!-- QRIS -->
+
+      <img
+        class="qris-image"
+        src="https://upload.wikimedia.org/wikipedia/commons/6/68/QRIS_logo.svg"
+        alt="QRIS"
+      >
+
+      <!-- FORM -->
+
+      <form id="orderForm" class="order-form">
+
+        <input
+          type="text"
+          id="customerName"
+          placeholder="Nama Pelanggan"
+          required
+        >
+
+        <select id="menuSelect" required>
+
+          <option value="">
+            Pilih Menu
+          </option>
+
+        </select>
+
+        <input
+          type="number"
+          id="quantity"
+          placeholder="Jumlah Pesanan"
+          min="1"
+          required
+        >
+
+        <button type="submit">
+          Buat Pesanan
+        </button>
+
+      </form>
+
+      <!-- RESULT -->
+
+      <div class="invoice" id="invoice">
+
+        <h3>Detail Pesanan</h3>
+
+        <p id="resultName"></p>
+
+        <p id="resultMenu"></p>
+
+        <p id="resultQty"></p>
+
+        <p id="resultTotal"></p>
+
+        <div class="success-box">
+          ✅ Silahkan lakukan pembayaran menggunakan QRIS
+        </div>
+
       </div>
 
     </div>
+
   </section>
 
   <!-- FOOTER -->
-  <footer id="contact">
-    <h3>Rasa Kopi</h3>
-    <p>© 2026 All Rights Reserved</p>
 
-    <div class="socials">
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-facebook"></i>
-      <i class="fab fa-tiktok"></i>
-    </div>
+  <footer>
+
+    <p>
+      © 2026 Rasa Kopi Indonesia
+    </p>
+
   </footer>
 
-  <button id="payButton">
-  Bayar QRIS
-</button>
+  <script src="data.js"></script>
+  <script src="index.js"></script>
 
-<script
-src="https://app.sandbox.midtrans.com/snap/snap.js"
-data-client-key="ISI_CLIENT_KEY">
-</script>
-
-  <script src="kelompok16.js"></script>
 </body>
+
 </html>
